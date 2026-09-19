@@ -183,7 +183,61 @@ section {
   line-height: 1.9;
   font-size: 14px;
 }
+/* DIARY WRITE */
 
+.diary-write {
+  margin-top: 28px;
+  padding: 30px;
+  background: #fff0f3;
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(100, 70, 90, 0.07);
+}
+
+.diary-write h3 {
+  margin-top: 0;
+  font-size: 22px;
+  color: #704c69;
+}
+
+.diary-write p {
+  color: #8c7185;
+  font-size: 14px;
+}
+
+.diary-write textarea {
+  width: 100%;
+  min-height: 170px;
+  margin-top: 10px;
+  padding: 20px;
+  border: 2px solid #f4d8df;
+  border-radius: 18px;
+  background: #fffdfc;
+  color: #5d4160;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.8;
+  resize: vertical;
+  outline: none;
+}
+
+.diary-write textarea:focus {
+  border-color: #e9b8c7;
+}
+
+.diary-write button {
+  margin-top: 15px;
+  padding: 11px 25px;
+  border: 0;
+  border-radius: 22px;
+  background: #ffd5df;
+  color: #65445e;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.diary-write button:hover {
+  background: #ffc7d5;
+}
 /* GALLERY */
 
 .gallery-grid {
@@ -478,7 +532,18 @@ HAPPY MEMORY
 
 </section>
 
+<!-- 오늘의 일기 작성 -->
+<div class="diary-write">
+  <h3>📖 오늘의 일기 ♡</h3>
+  <p>오늘의 이야기를 자유롭게 남겨보세요.</p>
 
+  <textarea id="diaryText"
+    placeholder="한 줄이어도 좋아요. 생각나는 대로 적어보세요 ♡"></textarea>
+
+  <button onclick="saveDiary()">🌷 저장하기</button>
+
+  <p id="saveMessage"></p>
+</div>
 <!-- GALLERY -->
 
 <section id="gallery">
@@ -617,6 +682,27 @@ Thank you for being here ♡
 </footer>
 
 </div>
+<script>
+function saveDiary() {
+  const diaryText = document.getElementById("diaryText").value;
+  const saveMessage = document.getElementById("saveMessage");
 
+  if (diaryText.trim() === "") {
+    saveMessage.textContent = "오늘의 이야기를 먼저 적어주세요 ♡";
+    return;
+  }
+
+  localStorage.setItem("jinAhDiary", diaryText);
+  saveMessage.textContent = "🌷 오늘의 일기가 저장되었어요 ♡";
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+  const savedDiary = localStorage.getItem("jinAhDiary");
+
+  if (savedDiary) {
+    document.getElementById("diaryText").value = savedDiary;
+  }
+});
+</script>
 </body>
 </html>

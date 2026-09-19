@@ -742,7 +742,7 @@ function showDiaries() {
 
   diaryList.innerHTML = "";
 
-  diaries.forEach(function(diary) {
+  diaries.forEach(function(diary, index) {
     const item = document.createElement("div");
 
     item.style.marginTop = "18px";
@@ -761,6 +761,37 @@ function showDiaries() {
 
     item.appendChild(date);
     item.appendChild(text);
+    const buttonBox = document.createElement("div");
+buttonBox.style.marginTop = "12px";
+
+const editBtn = document.createElement("button");
+editBtn.textContent = "✏️ 수정";
+editBtn.style.marginRight = "8px";
+
+editBtn.onclick = function() {
+    const newText = prompt("일기를 수정해 주세요 ♡", diary.text);
+
+    if (newText !== null && newText.trim() !== "") {
+        diary.text = newText.trim();
+        localStorage.setItem("jinAhDiaries", JSON.stringify(diaries));
+        showDiaries();
+    }
+};
+
+const deleteBtn = document.createElement("button");
+deleteBtn.textContent = "🗑️ 삭제";
+
+deleteBtn.onclick = function() {
+    if (confirm("이 일기를 삭제할까요?")) {
+        diaries.splice(index, 1);
+        localStorage.setItem("jinAhDiaries", JSON.stringify(diaries));
+        showDiaries();
+    }
+};
+
+buttonBox.appendChild(editBtn);
+buttonBox.appendChild(deleteBtn);
+item.appendChild(buttonBox);
     diaryList.appendChild(item);
   });
 }

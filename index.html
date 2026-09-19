@@ -687,17 +687,25 @@ Thank you for being here ♡
 </div>
 <script>
 function saveDiary() {
-  const diaryText = document.getElementById("diaryText").value.trim();
+  const diaryInput = document.getElementById("diaryText");
   const saveMessage = document.getElementById("saveMessage");
+  const diaryText = diaryInput.value.trim();
 
   if (diaryText === "") {
     saveMessage.textContent = "오늘의 이야기를 먼저 적어주세요 ♡";
     return;
   }
 
-  let diaries = JSON.parse(localStorage.getItem("jinAhDiaries")) || [];
+  let diaries = [];
+
+  try {
+    diaries = JSON.parse(localStorage.getItem("jinAhDiaries")) || [];
+  } catch (e) {
+    diaries = [];
+  }
 
   const today = new Date();
+
   const dateText =
     today.getFullYear() + ". " +
     String(today.getMonth() + 1).padStart(2, "0") + ". " +
@@ -710,30 +718,56 @@ function saveDiary() {
 
   localStorage.setItem("jinAhDiaries", JSON.stringify(diaries));
 
-  document.getElementById("diaryText").value = "";
+  diaryInput.value = "";
   saveMessage.textContent = "🌷 오늘의 일기가 저장되었어요 ♡";
 
   showDiaries();
 }
 
+
 function showDiaries() {
   const diaryList = document.getElementById("diaryList");
-  const diaries = JSON.parse(localStorage.getItem("jinAhDiaries")) || [];
+
+  if (!diaryList) {
+    return;
+  }
+
+  let diaries = [];
+
+  try {
+    diaries = JSON.parse(localStorage.getItem("jinAhDiaries")) || [];
+  } catch (e) {
+    diaries = [];
+  }
 
   diaryList.innerHTML = "";
 
   diaries.forEach(function(diary) {
     const item = document.createElement("div");
-    item.innerHTML =
-      "<strong>🌷 " + diary.date + "</strong><br>" +
-      "<p>" + diary.text + "</p>";
 
+    item.style.marginTop = "18px";
+    item.style.padding = "20px";
+    item.style.background = "#ffffff";
+    item.style.borderRadius = "18px";
+    item.style.border = "1px solid #f3d6df";
+
+    const date = document.createElement("strong");
+    date.textContent = "🌷 " + diary.date;
+
+    const text = document.createElement("p");
+    text.textContent = diary.text;
+    text.style.whiteSpace = "pre-wrap";
+    text.style.lineHeight = "1.8";
+
+    item.appendChild(date);
+    item.appendChild(text);
     diaryList.appendChild(item);
   });
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-    showDiaries();
+
+window.addEventListener("DOMContentLoaded", function() {
+  showDiaries();
 });
 </script>
 </body>

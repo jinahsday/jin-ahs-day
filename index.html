@@ -543,7 +543,10 @@ HAPPY MEMORY
   <button onclick="saveDiary()">🌷 저장하기</button>
 
   <p id="saveMessage"></p>
-</div>
+
+<div id="diaryList"></div>
+
+</div></div>
 <!-- GALLERY -->
 
 <section id="gallery">
@@ -684,24 +687,53 @@ Thank you for being here ♡
 </div>
 <script>
 function saveDiary() {
-  const diaryText = document.getElementById("diaryText").value;
+  const diaryText = document.getElementById("diaryText").value.trim();
   const saveMessage = document.getElementById("saveMessage");
 
-  if (diaryText.trim() === "") {
+  if (diaryText === "") {
     saveMessage.textContent = "오늘의 이야기를 먼저 적어주세요 ♡";
     return;
   }
 
-  localStorage.setItem("jinAhDiary", diaryText);
+  let diaries = JSON.parse(localStorage.getItem("jinAhDiaries")) || [];
+
+  const today = new Date();
+  const dateText =
+    today.getFullYear() + ". " +
+    String(today.getMonth() + 1).padStart(2, "0") + ". " +
+    String(today.getDate()).padStart(2, "0");
+
+  diaries.unshift({
+    date: dateText,
+    text: diaryText
+  });
+
+  localStorage.setItem("jinAhDiaries", JSON.stringify(diaries));
+
+  document.getElementById("diaryText").value = "";
   saveMessage.textContent = "🌷 오늘의 일기가 저장되었어요 ♡";
+
+  showDiaries();
+}
+
+function showDiaries() {
+  const diaryList = document.getElementById("diaryList");
+  const diaries = JSON.parse(localStorage.getItem("jinAhDiaries")) || [];
+
+  diaryList.innerHTML = "";
+
+  diaries.forEach(function(diary) {
+    const item = document.createElement("div");
+    item.innerHTML =
+      "<strong>🌷 " + diary.date + "</strong><br>" +
+      "<p>" + diary.text + "</p>";
+
+    diaryList.appendChild(item);
+  });
 }
 
 window.addEventListener("DOMContentLoaded", function () {
-  const savedDiary = localStorage.getItem("jinAhDiary");
-
-  if (savedDiary) {
-    document.getElementById("diaryText").value = savedDiary;
-  }
+    showDiaries();
 });
 </script>
 </body>

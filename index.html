@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jin Ah's Day</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fffaf7;
+  color: #5b4059;
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+}
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+  padding: 30px 22px 60px;
+}
+
+/* 제목 */
+header {
+  text-align: center;
+  padding: 35px 10px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-family: cursive;
+  font-size: 64px;
+  font-weight: 500;
+  color: #74486c;
+}
+
+header p {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 18px;
+  background: #fff0c9;
+  border-radius: 20px;
+  font-size: 15px;
+}
+
+/* 메뉴 */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0 30px;
+}
+
+nav button {
+  border: 0;
+  padding: 13px 25px;
+  border-radius: 25px;
+  font-size: 14px;
+  color: #62465f;
+  cursor: pointer;
+}
+
+.home { background: #ffdbe5; }
+.diary { background: #eee5ff; }
+.gallery { background: #dff3ec; }
+.memo { background: #fff0c9; }
+.memories { background: #eadcff; }
+
+/* 메인 그림 영역 */
+.hero {
+  min-height: 330px;
+  border-radius: 32px;
+  background:
+    linear-gradient(
+      135deg,
+      #ffe1e7,
+      #fff0d8 35%,
+      #e0f2eb 68%,
+      #ece2ff
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  background: rgba(255,255,255,.72);
+  padding: 30px 40px;
+  border-radius: 30px;
+}
+
+.hero .dog {
+  font-size: 75px;
+  margin-bottom: 5px;
+}
+
+.hero h2 {
+  margin: 5px 0;
+  font-size: 31px;
+}
+
+.hero p {
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* 공통 영역 */
+section {
+  margin-top: 45px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.section-title span {
+  font-size: 13px;
+  color: #9b8597;
+}
+
+/* 일기 */
+.diary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.card {
+  padding: 22px;
+  border-radius: 24px;
+  min-height: 185px;
+  box-shadow: 0 7px 20px rgba(100,70,90,.06);
+}
+
+.card:nth-child(1) { background: #ffe7e8; }
+.card:nth-child(2) { background: #e8f4ec; }
+.card:nth-child(3) { background: #eee6ff; }
+
+.date {
+  font-size: 12px;
+  color: #876d82;
+}
+
+.card h3 {
+  margin: 17px 0 10px;
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* 갤러리 */
+.photos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.photo {
+  aspect-ratio: 1 / .8;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+}
+
+.photo:nth-child(1) { background: #ffe0e6; }
+.photo:nth-child(2) { background: #dcefff; }
+.photo:nth-child(3) { background: #fff0cd; }
+.photo:nth-child(4) { background: #e2f2e7; }
+.photo:nth-child(5) { background: #eee2ff; }
+
+/* 메모 */
+.memo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.note {
+  min-height: 150px;
+  padding: 25px;
+  border-radius: 8px;
+  line-height: 2;
+  box-shadow: 3px 7px 15px rgba(0,0,0,.06);
+}
+
+.note:nth-child(1) {
+  background: #ffdfe6;
+  transform: rotate(-1deg);
+}
+
+.note:nth-child(2) {
+  background: #fff1b9;
+  transform: rotate(1deg);
+}
+
+.note:nth-child(3) {
+  background: #ddf1e6;
+  transform: rotate(-1deg);
+}
+
+/* 추억 */
+.memory {
+  background: #f1e8ff;
+  border-radius: 25px;
+  padding: 28px;
+}
+
+.memory h3 {
+  margin-top: 0;
+}
+
+/* 아래 문구 */
+footer {
+  margin-top: 55px;
+  padding: 35px;
+  border-radius: 35px;
+  text-align: center;
+  background: #ffe5eb;
+  line-height: 2;
+}
+
+footer strong {
+  font-size: 19px;
+}
+
+@media (max-width: 700px) {
+
+  header h1 {
+    font-size: 45px;
+  }
+
+  .diary-grid,
+  .memo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    min-height: 280px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <div>🌷</div>
+  <h1>Jin Ah's Day ♡</h1>
+  <p>소소하지만 확실한 행복을 기록하는 공간</p>
+</header>
+
+<nav>
+  <button class="home">🏠 HOME</button>
+  <button class="diary">📖 DIARY</button>
+  <button class="gallery">📷 GALLERY</button>
+  <button class="memo">📝 MEMO</button>
+  <button class="memories">💗 MEMORIES</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="dog">🐶</div>
+    <h2>오늘도 좋은 하루 ♡</h2>
+    <p>
+      작은 행복들이 모여<br>
+      특별한 하루가 돼요.
+    </p>
+  </div>
+</div>
+
+<section>
+  <div class="section-title">
+    <h2>🌸 Recent Diary</h2>
+    <span>최근의 하루</span>
+  </div>
+
+  <div class="diary-grid">
+
+    <div class="card">
+      <div class="date">TODAY</div>
+      <h3>행복한 하루 ♡</h3>
+      <p>
+        오늘의 작은 행복을 기록해요.<br>
+        한 줄이어도 괜찮아요.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="date">MY DAY</div>
+      <h3>오늘의 이야기</h3>
+      <p>
+        특별하지 않은 하루도<br>
+        시간이 지나면 소중한 추억이 되니까요. 🌷
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="date">MEMORY</div>
+      <h3>소중한 순간</h3>
+      <p>
+        사진이 있는 날에는 사진과 함께,<br>
+        글만 쓰고 싶은 날에는 글만 남겨요.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>📷 Gallery</h2>
+    <span>일상의 조각들</span>
+  </div>
+
+  <div class="photos">
+    <div class="photo">🌷</div>
+    <div class="photo">☁️</div>
+    <div class="photo">☕</div>
+    <div class="photo">🐶</div>
+    <div class="photo">🌼</div>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>📝 Memo</h2>
+    <span>작은 메모들</span>
+  </div>
+
+  <div class="memo-grid">
+
+    <div class="note">
+      ♡ 오늘도 수고했어<br>
+      ♡ 많이 웃기<br>
+      ♡ 나를 아껴주기
+    </div>
+
+    <div class="note">
+      좋은 일이<br>
+      더 많이 생길 거야 ♡
+    </div>
+
+    <div class="note">
+      지금처럼,<br>
+      늘 행복하자 🌷
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>💗 Memories</h2>
+    <span>지난 추억들</span>
+  </div>
+
+  <div class="memory">
+    <h3>우리의 소중한 순간들 ♡</h3>
+    <p>
+      일기와 사진이 차곡차곡 쌓이면<br>
+      연도와 월별로 지난 추억을 다시 만나볼 수 있어요.
+    </p>
+  </div>
+</section>
+
+<footer>
+  🌷<br>
+  <strong>평범한 하루가 모여,<br>
+  특별한 인생이 되는 것 같아요 ♡</strong>
+  <br><br>
+  Jin Ah's Day
+</footer>
+
+</div>
+
+</body>
+</html>

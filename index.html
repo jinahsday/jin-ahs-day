@@ -77,25 +77,11 @@ nav a:hover {
   transform: translateY(-3px);
 }
 
-.home {
-  background: #ffdce5;
-}
-
-.diary {
-  background: #eee4ff;
-}
-
-.gallery {
-  background: #dff3ec;
-}
-
-.memo {
-  background: #fff0c9;
-}
-
-.memories {
-  background: #eadcff;
-}
+.home { background: #ffdce5; }
+.diary { background: #eee4ff; }
+.gallery { background: #dff3ec; }
+.memo { background: #fff0c9; }
+.memories { background: #eadcff; }
 
 /* MAIN IMAGE */
 
@@ -156,17 +142,9 @@ section {
   box-shadow: 0 8px 25px rgba(100, 70, 90, 0.06);
 }
 
-.diary-card:nth-child(1) {
-  background: #ffe5e8;
-}
-
-.diary-card:nth-child(2) {
-  background: #e5f3ed;
-}
-
-.diary-card:nth-child(3) {
-  background: #eee6ff;
-}
+.diary-card:nth-child(1) { background: #ffe5e8; }
+.diary-card:nth-child(2) { background: #e5f3ed; }
+.diary-card:nth-child(3) { background: #eee6ff; }
 
 .date {
   font-size: 12px;
@@ -183,6 +161,7 @@ section {
   line-height: 1.9;
   font-size: 14px;
 }
+
 /* DIARY WRITE */
 
 .diary-write {
@@ -238,6 +217,7 @@ section {
 .diary-write button:hover {
   background: #ffc7d5;
 }
+
 /* GALLERY */
 
 .gallery-grid {
@@ -247,34 +227,39 @@ section {
 }
 
 .gallery-box {
-  aspect-ratio: 1 / 0.8;
+  min-width: 0;
   border-radius: 22px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(100, 70, 90, .08);
+}
+
+.gallery-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 0.8;
+  object-fit: cover;
+}
+
+.gallery-caption {
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 13px;
+  color: #75566f;
+}
+
+.gallery-placeholder {
+  aspect-ratio: 1 / 0.8;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 45px;
-  box-shadow: 0 6px 18px rgba(100,70,90,.05);
 }
 
-.gallery-box:nth-child(1) {
-  background: #ffe3e9;
-}
-
-.gallery-box:nth-child(2) {
-  background: #e3f0ff;
-}
-
-.gallery-box:nth-child(3) {
-  background: #fff0ce;
-}
-
-.gallery-box:nth-child(4) {
-  background: #e2f3e9;
-}
-
-.gallery-box:nth-child(5) {
-  background: #eee4ff;
-}
+.gallery-box:nth-child(2) .gallery-placeholder { background: #e3f0ff; }
+.gallery-box:nth-child(3) .gallery-placeholder { background: #fff0ce; }
+.gallery-box:nth-child(4) .gallery-placeholder { background: #e2f3e9; }
+.gallery-box:nth-child(5) .gallery-placeholder { background: #eee4ff; }
 
 /* MEMO */
 
@@ -343,14 +328,13 @@ section {
   margin-top: 60px;
   padding: 45px 25px;
   text-align: center;
-  background:
-    linear-gradient(
-      90deg,
-      #ffe3e9,
-      #fff0d7,
-      #e2f2e9,
-      #eee5ff
-    );
+  background: linear-gradient(
+    90deg,
+    #ffe3e9,
+    #fff0d7,
+    #e2f2e9,
+    #eee5ff
+  );
   border-radius: 45px;
 }
 
@@ -422,271 +406,235 @@ footer {
 
 </header>
 
-
 <nav>
 
-<a class="home" href="#home">
-🏠 HOME
-</a>
-
-<a class="diary" href="#diary">
-📖 DIARY
-</a>
-
-<a class="gallery" href="#gallery">
-📷 GALLERY
-</a>
-
-<a class="memo" href="#memo">
-📝 MEMO
-</a>
-
-<a class="memories" href="#memories">
-💗 MEMORIES
-</a>
+  <a class="home" href="#home">🏠 HOME</a>
+  <a class="diary" href="#diary">📖 DIARY</a>
+  <a class="gallery" href="#gallery">📷 GALLERY</a>
+  <a class="memo" href="#memo">📝 MEMO</a>
+  <a class="memories" href="#memories">💗 MEMORIES</a>
 
 </nav>
 
-
-<!-- 진아님의 메인 그림 -->
+<!-- 메인 그림 -->
 
 <div class="hero">
-
-<img
-src="jin-ah-main.png"
-alt="Jin Ah's Day 여자아이와 강아지 일러스트">
-
+  <img
+    src="jin-ah-main.png"
+    alt="Jin Ah's Day 여자아이와 강아지 일러스트">
 </div>
-
 
 <!-- DIARY -->
 
 <section id="diary">
 
-<div class="section-title">
-<h2>🌸 Recent Diary</h2>
-<span>최근의 하루</span>
-</div>
+  <div class="section-title">
+    <h2>🌸 Recent Diary</h2>
+    <span>최근의 하루</span>
+  </div>
 
+  <div class="diary-grid">
 
-<div class="diary-grid">
+    <div class="diary-card">
+      <div class="date">TODAY</div>
 
-<div class="diary-card">
+      <h3>행복한 하루 ♡</h3>
 
-<div class="date">
-TODAY
-</div>
+      <p>
+        오늘의 이야기를 자유롭게 기록해요.<br><br>
+        한 줄만 적고 싶은 날에는 한 줄만,<br>
+        이야기가 많은 날에는 마음껏 적어요.
+      </p>
+    </div>
 
-<h3>
-행복한 하루 ♡
-</h3>
+    <div class="diary-card">
+      <div class="date">MY DAY</div>
 
-<p>
-오늘의 이야기를 자유롭게 기록해요.<br><br>
-한 줄만 적고 싶은 날에는 한 줄만,<br>
-이야기가 많은 날에는 마음껏 적어요.
-</p>
+      <h3>오늘의 이야기 🌷</h3>
 
-</div>
+      <p>
+        별일 없었던 하루도 좋아요.<br><br>
+        평범했던 오늘이 시간이 지나면
+        소중한 추억이 될 테니까요.
+      </p>
+    </div>
 
+    <div class="diary-card">
+      <div class="date">HAPPY MEMORY</div>
 
-<div class="diary-card">
+      <h3>오늘의 소확행 ♡</h3>
 
-<div class="date">
-MY DAY
-</div>
+      <p>
+        맛있는 커피 한 잔,<br>
+        예쁜 하늘,<br>
+        좋아하는 사람과 나눈 이야기.<br><br>
+        작은 행복을 남겨요.
+      </p>
+    </div>
 
-<h3>
-오늘의 이야기 🌷
-</h3>
-
-<p>
-별일 없었던 하루도 좋아요.<br><br>
-평범했던 오늘이 시간이 지나면
-소중한 추억이 될 테니까요.
-</p>
-
-</div>
-
-
-<div class="diary-card">
-
-<div class="date">
-HAPPY MEMORY
-</div>
-
-<h3>
-오늘의 소확행 ♡
-</h3>
-
-<p>
-맛있는 커피 한 잔,<br>
-예쁜 하늘,<br>
-좋아하는 사람과 나눈 이야기.<br><br>
-작은 행복을 남겨요.
-</p>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 <!-- 오늘의 일기 작성 -->
+
 <div class="diary-write">
+
   <h3>📖 오늘의 일기 ♡</h3>
   <p>오늘의 이야기를 자유롭게 남겨보세요.</p>
 
-  <textarea id="diaryText"
+  <textarea
+    id="diaryText"
     placeholder="한 줄이어도 좋아요. 생각나는 대로 적어보세요 ♡"></textarea>
 
   <button onclick="saveDiary()">🌷 저장하기</button>
 
   <p id="saveMessage"></p>
 
-<div id="diaryList"></div>
+  <div id="diaryList"></div>
 
-</div></div>
+</div>
+
 <!-- GALLERY -->
 
 <section id="gallery">
 
-<div class="section-title">
-<h2>📷 Gallery</h2>
-<span>일상의 조각들</span>
-</div>
+  <div class="section-title">
+    <h2>📷 Gallery</h2>
+    <span>일상의 조각들</span>
+  </div>
 
+  <div class="gallery-grid">
 
-<div class="gallery-grid">
+    <div class="gallery-box">
+      <img
+        class="gallery-photo"
+        src="KakaoTalk_20260917_144153957.jpg"
+        alt="진아의 소중한 하루">
 
-<div class="gallery-box">
-🌷
-</div>
+      <div class="gallery-caption">
+        🌷 소중한 하루 ♡
+      </div>
+    </div>
 
-<div class="gallery-box">
-🌸
-</div>
+    <div class="gallery-box">
+      <div class="gallery-placeholder">🌸</div>
+      <div class="gallery-caption">행복한 순간</div>
+    </div>
 
-<div class="gallery-box">
-☕
-</div>
+    <div class="gallery-box">
+      <div class="gallery-placeholder">☕</div>
+      <div class="gallery-caption">일상의 여유</div>
+    </div>
 
-<div class="gallery-box">
-🐶
-</div>
+    <div class="gallery-box">
+      <div class="gallery-placeholder">🐶</div>
+      <div class="gallery-caption">함께한 시간</div>
+    </div>
 
-<div class="gallery-box">
-🌼
-</div>
+    <div class="gallery-box">
+      <div class="gallery-placeholder">🌼</div>
+      <div class="gallery-caption">오늘의 기억</div>
+    </div>
 
-</div>
+  </div>
 
 </section>
-
 
 <!-- MEMO -->
 
 <section id="memo">
 
-<div class="section-title">
-<h2>📝 Memo</h2>
-<span>작은 메모들</span>
-</div>
+  <div class="section-title">
+    <h2>📝 Memo</h2>
+    <span>작은 메모들</span>
+  </div>
 
+  <div class="memo-grid">
 
-<div class="memo-grid">
+    <div class="memo-card">
+      ✓ 건강하기<br>
+      ✓ 웃기 많이<br>
+      ✓ 좋은 생각하기<br>
+      ✓ 나를 아껴주기 🌷
+    </div>
 
-<div class="memo-card">
-✓ 건강하기<br>
-✓ 웃기 많이<br>
-✓ 좋은 생각하기<br>
-✓ 나를 아껴주기 🌷
-</div>
+    <div class="memo-card">
+      ☀️ 좋은 일이<br>
+      더 많이 생길 거야.<br><br>
+      진아야 ♡
+    </div>
 
+    <div class="memo-card">
+      지금처럼,<br><br>
+      늘 행복하자 ♡<br><br>
+      🍀
+    </div>
 
-<div class="memo-card">
-☀️ 좋은 일이<br>
-더 많이 생길 거야.<br><br>
-진아야 ♡
-</div>
-
-
-<div class="memo-card">
-지금처럼,<br><br>
-늘 행복하자 ♡<br><br>
-🍀
-</div>
-
-</div>
+  </div>
 
 </section>
-
 
 <!-- MEMORIES -->
 
 <section id="memories">
 
-<div class="section-title">
-<h2>💗 Memories</h2>
-<span>지난 추억들</span>
-</div>
+  <div class="section-title">
+    <h2>💗 Memories</h2>
+    <span>지난 추억들</span>
+  </div>
 
+  <div class="memory-card">
 
-<div class="memory-card">
+    <div class="memory-icon">
+      🌸
+    </div>
 
-<div class="memory-icon">
-🌸
-</div>
+    <div>
+      <h3>소중한 추억들 ♡</h3>
 
-<div>
+      <p>
+        일기와 사진이 하나둘 쌓이면<br>
+        지난 행복했던 순간들을 이곳에서 다시 만나봐요.
+      </p>
+    </div>
 
-<h3>
-소중한 추억들 ♡
-</h3>
-
-<p>
-일기와 사진이 하나둘 쌓이면<br>
-지난 행복했던 순간들을 이곳에서 다시 만나봐요.
-</p>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
-
 <div class="happy">
 
-<div class="dog">
-🐶 🌷
+  <div class="dog">
+    🐶 🌷
+  </div>
+
+  <strong>
+    평범한 하루가 모여,<br>
+    특별한 인생이 되는 것 같아요 ♡
+  </strong>
+
+  <p>
+    오늘도 수고했어.<br>
+    지금도 충분히 잘하고 있어.
+  </p>
+
 </div>
-
-<strong>
-평범한 하루가 모여,<br>
-특별한 인생이 되는 것 같아요 ♡
-</strong>
-
-<p>
-오늘도 수고했어.<br>
-지금도 충분히 잘하고 있어.
-</p>
-
-</div>
-
 
 <footer>
 
-Thank you for being here ♡
-<br><br>
-
-- Jin Ah's Day -
+  Thank you for being here ♡
+  <br><br>
+  - Jin Ah's Day -
 
 </footer>
 
 </div>
+
 <script>
+
 function saveDiary() {
+
   const diaryInput = document.getElementById("diaryText");
   const saveMessage = document.getElementById("saveMessage");
   const diaryText = diaryInput.value.trim();
@@ -716,17 +664,24 @@ function saveDiary() {
     text: diaryText
   });
 
-  localStorage.setItem("jinAhDiaries", JSON.stringify(diaries));
+  localStorage.setItem(
+    "jinAhDiaries",
+    JSON.stringify(diaries)
+  );
 
   diaryInput.value = "";
-  saveMessage.textContent = "🌷 오늘의 일기가 저장되었어요 ♡";
+
+  saveMessage.textContent =
+    "🌷 오늘의 일기가 저장되었어요 ♡";
 
   showDiaries();
 }
 
 
 function showDiaries() {
-  const diaryList = document.getElementById("diaryList");
+
+  const diaryList =
+    document.getElementById("diaryList");
 
   if (!diaryList) {
     return;
@@ -735,7 +690,10 @@ function showDiaries() {
   let diaries = [];
 
   try {
-    diaries = JSON.parse(localStorage.getItem("jinAhDiaries")) || [];
+    diaries =
+      JSON.parse(
+        localStorage.getItem("jinAhDiaries")
+      ) || [];
   } catch (e) {
     diaries = [];
   }
@@ -743,7 +701,9 @@ function showDiaries() {
   diaryList.innerHTML = "";
 
   diaries.forEach(function(diary, index) {
-    const item = document.createElement("div");
+
+    const item =
+      document.createElement("div");
 
     item.style.marginTop = "18px";
     item.style.padding = "20px";
@@ -751,55 +711,97 @@ function showDiaries() {
     item.style.borderRadius = "18px";
     item.style.border = "1px solid #f3d6df";
 
-    const date = document.createElement("strong");
-    date.textContent = "🌷 " + diary.date;
+    const date =
+      document.createElement("strong");
 
-    const text = document.createElement("p");
+    date.textContent =
+      "🌷 " + diary.date;
+
+    const text =
+      document.createElement("p");
+
     text.textContent = diary.text;
     text.style.whiteSpace = "pre-wrap";
     text.style.lineHeight = "1.8";
 
     item.appendChild(date);
     item.appendChild(text);
-    const buttonBox = document.createElement("div");
-buttonBox.style.marginTop = "12px";
 
-const editBtn = document.createElement("button");
-editBtn.textContent = "✏️ 수정";
-editBtn.style.marginRight = "8px";
+    const buttonBox =
+      document.createElement("div");
 
-editBtn.onclick = function() {
-    const newText = prompt("일기를 수정해 주세요 ♡", diary.text);
+    buttonBox.style.marginTop = "12px";
 
-    if (newText !== null && newText.trim() !== "") {
+    const editBtn =
+      document.createElement("button");
+
+    editBtn.textContent = "✏️ 수정";
+    editBtn.style.marginRight = "8px";
+
+    editBtn.onclick = function() {
+
+      const newText =
+        prompt(
+          "일기를 수정해 주세요 ♡",
+          diary.text
+        );
+
+      if (
+        newText !== null &&
+        newText.trim() !== ""
+      ) {
+
         diary.text = newText.trim();
-        localStorage.setItem("jinAhDiaries", JSON.stringify(diaries));
+
+        localStorage.setItem(
+          "jinAhDiaries",
+          JSON.stringify(diaries)
+        );
+
         showDiaries();
-    }
-};
+      }
+    };
 
-const deleteBtn = document.createElement("button");
-deleteBtn.textContent = "🗑️ 삭제";
+    const deleteBtn =
+      document.createElement("button");
 
-deleteBtn.onclick = function() {
-    if (confirm("이 일기를 삭제할까요?")) {
+    deleteBtn.textContent = "🗑️ 삭제";
+
+    deleteBtn.onclick = function() {
+
+      if (
+        confirm("이 일기를 삭제할까요?")
+      ) {
+
         diaries.splice(index, 1);
-        localStorage.setItem("jinAhDiaries", JSON.stringify(diaries));
-        showDiaries();
-    }
-};
 
-buttonBox.appendChild(editBtn);
-buttonBox.appendChild(deleteBtn);
-item.appendChild(buttonBox);
+        localStorage.setItem(
+          "jinAhDiaries",
+          JSON.stringify(diaries)
+        );
+
+        showDiaries();
+      }
+    };
+
+    buttonBox.appendChild(editBtn);
+    buttonBox.appendChild(deleteBtn);
+
+    item.appendChild(buttonBox);
+
     diaryList.appendChild(item);
   });
 }
 
 
-window.addEventListener("DOMContentLoaded", function() {
-  showDiaries();
-});
+window.addEventListener(
+  "DOMContentLoaded",
+  function() {
+    showDiaries();
+  }
+);
+
 </script>
+
 </body>
 </html>
